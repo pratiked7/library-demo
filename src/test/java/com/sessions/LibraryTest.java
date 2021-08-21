@@ -91,4 +91,18 @@ class LibraryTest {
         //check whether getRentedDate is being called or not
         Mockito.verify(rentedBook, Mockito.times(2)).getRentedDate();
     }
+
+    @Test
+    public void when_returning_book_receipt_should_be_returning(){
+
+        RentedBook rentedBook =  library.rent("The God Of Small Things");
+
+        Double amount = 3.0;
+
+        Receipt receipt = library.returnBook(rentedBook, amount);
+
+        assertNotNull(receipt);
+        assertThat(receipt.bookName, equalTo("The God Of Small Things"));
+        assertThat(receipt.receiptDate, equalTo(LocalDate.now()));
+    }
 }

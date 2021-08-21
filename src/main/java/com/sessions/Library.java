@@ -88,4 +88,12 @@ public class Library {
                 .unmodifiableList(books);
     }
 
+    public Receipt returnBook(RentedBook rentedBook, Double amount) {
+
+        Receipt receipt = new Receipt();
+        receipt.bookName = rentedBook.getBook().getName();
+        receipt.receiptDate = LocalDate.now();
+
+        return receipt;
+    }
 }
